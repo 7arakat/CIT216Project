@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FreeTextBox, Version=3.3.1.12354, Culture=neutral, PublicKeyToken=5962a4e684a48b87, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\free text box\Framework-4-0\FreeTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -67,20 +71,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ShortCoursesDB.mdf" />
-    <Content Include="App_Data\ShortCoursesDB_log.ldf">
-      <DependentUpon>ShortCoursesDB.mdf</DependentUpon>
+    <Content Include="App_Data\ItemsDB.mdf" />
+    <Content Include="App_Data\ItemsDB_log.ldf">
+      <DependentUpon>ItemsDB.mdf</DependentUpon>
     </Content>
-    <Content Include="default.aspx" />
+    <Content Include="images\20140209_225039.jpg" />
+    <Content Include="images\kfupm photo.png" />
+    <Content Include="Items.ascx" />
+    <Content Include="MainPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="default.aspx.cs">
-      <DependentUpon>default.aspx</DependentUpon>
+    <Compile Include="Items.ascx.cs">
+      <DependentUpon>Items.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="default.aspx.designer.cs">
-      <DependentUpon>default.aspx</DependentUpon>
+    <Compile Include="Items.ascx.designer.cs">
+      <DependentUpon>Items.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +107,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
