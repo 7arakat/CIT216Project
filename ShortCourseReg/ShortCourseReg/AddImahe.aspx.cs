@@ -22,10 +22,13 @@ namespace ShortCourseReg
 
         }
 
-       
 
+        
         protected void B_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
+
             HttpPostedFile posted_File = FileUpload1.PostedFile;
             string File_Name = Path.GetFileName(posted_File.FileName);
             string File_Extension = Path.GetExtension(File_Name);
@@ -45,6 +48,7 @@ namespace ShortCourseReg
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+
             HttpPostedFile posted_File = FileUpload1.PostedFile;
             string File_Name = Path.GetFileName(posted_File.FileName);
             string File_path = Path.GetFullPath(posted_File.FileName);
