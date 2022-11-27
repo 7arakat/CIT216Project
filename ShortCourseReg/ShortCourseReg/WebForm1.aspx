@@ -18,7 +18,7 @@
                                 <td>Name: <%# Eval("Item_Name") %></td>
                             </tr>
                             <tr>
-                                <td><asp:Image ID="Image1" runat="server" ImageUrl='<%# mm((int)Eval("Item_ID")) %>'/></td>
+                                <%--<td><asp:Image ID="Image1" runat="server" ImageUrl='<%# mm((int)Eval("Item_ID")) %>'/></td>--%>
                             </tr>
                         </table>
                     </ItemTemplate>
