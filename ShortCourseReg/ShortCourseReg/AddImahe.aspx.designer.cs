@@ -24,6 +24,15 @@ namespace ShortCourseReg
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// RequiredFieldValidator7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+
+        /// <summary>
         /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
@@ -150,15 +159,6 @@ namespace ShortCourseReg
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
 
         /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-
-        /// <summary>
         /// RequiredFieldValidator6 control.
         /// </summary>
         /// <remarks>
@@ -166,6 +166,15 @@ namespace ShortCourseReg
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+
+        /// <summary>
+        /// Show_Image control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Show_Image;
 
         /// <summary>
         /// saved control.

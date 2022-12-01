@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,16 +20,17 @@
                     <ItemTemplate>
                         <table>
                             <tr>
-                                <td>Name: <%# Eval("Item_Name") %></td>
+                                <td class="auto-style1" style="vertical-align: middle; text-align: center">Name: <%# Eval("ItemName") %></td>
                             </tr>
                             <tr>
-                                <%--<td><asp:Image ID="Image1" runat="server" ImageUrl='<%# mm((int)Eval("Item_ID")) %>'/></td>--%>
+                                <td class="auto-style1"><asp:Image ID="Image1" runat="server" ImageUrl='<%# mm((int)Eval("ItemID")) %>' Height="200px" Width="300px"/></td>
                             </tr>
                         </table>
                     </ItemTemplate>
                 </asp:DataList>
 
             </asp:Panel>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </div>
     </form>
 </body>
