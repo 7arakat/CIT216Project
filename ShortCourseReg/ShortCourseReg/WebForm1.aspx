@@ -1,5 +1,20 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="ShortCourseReg.WebForm1" %>
 
+<!-- 
+    Data base code 
+    CREATE TABLE [dbo].[Items] (
+    [ItemID]          INT            IDENTITY (1, 1) NOT NULL,
+    [ItemName]        NVARCHAR (100) NULL,
+    [ItemDescription] TEXT           NULL,
+    [ItemCategory]    NVARCHAR (50)  NULL,
+    [ItemCreator]     NVARCHAR (50)  NULL,
+    [ItemImage]       IMAGE          NULL,
+    CONSTRAINT [PK_Items] PRIMARY KEY CLUSTERED ([ItemID] ASC)
+);
+    -->
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
