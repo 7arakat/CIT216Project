@@ -17,6 +17,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Web.Security;
 using System.Diagnostics;
 using System.Reflection.Emit;
+using System.Web.Services;
 //using static System.Net.WebRequestMethods;
 
 
@@ -24,76 +25,52 @@ namespace ShortCourseReg
 {
     public partial class AddImahe : System.Web.UI.Page
     {
+        byte[] image_byte = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            image_byte = (byte[])Session["ImageValue"];
         }
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
         SqlCommand cmd = new SqlCommand();
-        byte[] imag_byte = null;
-        bool file_type = false; 
         protected void Save_Click(object sender, EventArgs e)
         {
-            if (FileUpload1.HasFile)
+            try
             {
-                HttpPostedFile posted_File = FileUpload1.PostedFile;
-                string File_Name = Path.GetFileName(posted_File.FileName);
-                string File_Extension = Path.GetExtension(File_Name);
-                if (File_Extension.ToLower() == ".jpg" || File_Extension.ToLower() == ".gif" || File_Extension.ToLower() == ".png" || File_Extension.ToLower() == ".bmp")
-                {
-                    file_type = true;
-                    Stream stream = posted_File.InputStream;
-                    BinaryReader br = new BinaryReader(stream);
-                    byte[] imag_byte = br.ReadBytes((int)stream.Length);
-                }
+                con.Open();
+                string SQL_Command = "insert into Items(ItemName, ItemDescription, ItemCategory, ItemCreator, ItemImage) Values(@ItemName, @ItemDescription, @ItemCategory, @ItemCreator, @ItemImage)";
+                cmd = new SqlCommand(SQL_Command, con);
+                cmd.Parameters.AddWithValue("@ItemName", Name.Text);
+                cmd.Parameters.AddWithValue("@ItemDescription", Description.Text);
+                cmd.Parameters.AddWithValue("@ItemCategory", Category.Text);
+                cmd.Parameters.AddWithValue("@ItemCreator", Creator.Text);
+                cmd.Parameters.AddWithValue("@ItemImage", image_byte);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                saved.Text = "Saved successfully";
+                Clear_Contrils();
             }
-
-            if (file_type)
+            catch (Exception ex)
             {
-                try
-                {
-                    string SQL_Command1 = "SELECT ItemID from Items ";
-                    con.Open();
-                    cmd = new SqlCommand(SQL_Command1, con);
-                    SqlDataReader R = cmd.ExecuteReader();
-                    if (R.Read())
-                    {
-                        Name.Text = Convert.ToString(R["ItemName"]);
+                saved.Text = "Error, " + ex;
+            } 
 
-                    }
-
-                    string SQL_Command2 = "insert into Items(ItemName, ItemDescription, ItemCategory, ItemCreator, ItemImage) Values(@ItemName, @ItemDescription, @ItemCategory, @ItemCreator, @ItemImage)";
-                    cmd = new SqlCommand(SQL_Command2, con);
-                    cmd.Parameters.AddWithValue("@ItemName", Name.Text);
-                    cmd.Parameters.AddWithValue("@ItemDescription", Description.Text);
-                    cmd.Parameters.AddWithValue("@ItemCategory", Category.Text);
-                    cmd.Parameters.AddWithValue("@ItemCreator", Creator.Text);
-                    cmd.Parameters.AddWithValue("@ItemImage", imag_byte);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    saved.Text = "Saved successfully";
-                }
-                catch (Exception ex)
-                {
-                    saved.Text = "Error, " + ex;
-                }
-            }
         }
          protected void Edit_Click(object sender, EventArgs e)
          {
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE Login set ItemDescription =@ItemDescription, ItemCategory =@ItemCategory, ItemCreator =@ItemCreator, ItemImage =@ItemImage  where ItemName= @ItemName", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Items set ItemDescription =@ItemDescription, ItemCategory =@ItemCategory, ItemCreator =@ItemCreator, ItemImage =@ItemImage  where ItemName= @ItemName", con);
                 cmd.Parameters.AddWithValue("@ItemName", Name.Text);
                 cmd.Parameters.AddWithValue("@ItemDescription", Description.Text);
                 cmd.Parameters.AddWithValue("@ItemCategory", Category.Text);
                 cmd.Parameters.AddWithValue("@ItemCreator", Creator.Text);
-                cmd.Parameters.AddWithValue("@ItemImage", imag_byte);
+                cmd.Parameters.AddWithValue("@ItemImage", image_byte);
                 cmd.ExecuteNonQuery();
             con.Close();
                 saved.Text = "--- Table Updated Successfully ---";
+                Clear_Contrils();
             }
             catch (Exception ex)
             {
@@ -116,8 +93,8 @@ namespace ShortCourseReg
                     Description.Text = Convert.ToString(R["ItemDescription"]);
                     Category.Text = Convert.ToString(R["ItemCategory"]);
                     Creator.Text = Convert.ToString(R["ItemCreator"]);
-                    byte[] imag_byte = (byte[])R["ItemImage"];
-                    string imge_string = Convert.ToBase64String(imag_byte);
+                    Session["ImageValue"] = (byte[])R["ItemImage"];
+                    string imge_string = Convert.ToBase64String((byte[])Session["ImageValue"]);
                     string imge = "data:Image/png;base64," + imge_string;
                     Image1.ImageUrl = imge;
                 }
@@ -140,16 +117,14 @@ namespace ShortCourseReg
                 cmd.Parameters.AddWithValue("@ItemName", Name.Text);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                saved.Text = "Deleted successfully";
+                saved.Text = "Item has Deleted successfully";
+                Clear_Contrils();
             }
             catch (Exception ex)
             {
                 saved.Text = "Error, " + ex;
             }
         }
-
-
-       
 
         public void Show_Image_Click(object sender, EventArgs e)
         {
@@ -161,20 +136,29 @@ namespace ShortCourseReg
 
                 if (File_Extension.ToLower() == ".jpg" || File_Extension.ToLower() == ".gif" || File_Extension.ToLower() == ".png" || File_Extension.ToLower() == ".bmp")
                 {
-                    file_type = true;
                     Stream stream = posted_File.InputStream;
                     BinaryReader br = new BinaryReader(stream);
-                    imag_byte = br.ReadBytes((int)stream.Length);
+                    image_byte = br.ReadBytes((int)stream.Length);
+                    Session["ImageValue"] = image_byte;
+                    image_vale.Text = "true";
+
+                    string imge_string = Convert.ToBase64String(image_byte);
+                    string img = "data:Image/png;base64," + imge_string;
+                    Image1.ImageUrl = img;
                 }
             }
-            if (file_type)
-            {
-                string imge_string = Convert.ToBase64String(imag_byte);
-                string imge = "data:Image/png;base64," + imge_string;
-                Image1.ImageUrl = imge;
-            }
         }
-
+        private void Clear_Contrils()
+        {
+            Name.Text = "";
+            Description.Text = "";
+            Category.Text = "";
+            Creator.Text = "";
+            Image1.ImageUrl = null;
+            image_byte = null;
+            Session["ImageValue"] = null;
+            image_vale.Text = "";
+        }
         
     }
 

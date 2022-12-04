@@ -7,18 +7,21 @@
     <title></title>
 
      
-   <%-- <script type="text/javascript">
+   <script type="text/javascript">
         function UploadFile(fileUpload) {
             if (fileUpload.value != '') {
-                document.getElementById("<%=Show_Image.ClientID %>").click();
+                document.getElementById("<%=Show_Image.ClientID%>").click();
              }
         }
-    </script>--%>
+   </script>
+
     
     </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div>    
+        <asp:Button ID="Show_Image" runat="server" OnClick="Show_Image_Click" Text="Show image" CausesValidation="False" Style=" position: absolute; top:-1000000px; left:-10000px;   "/>
+            <asp:TextBox ID="image_vale" runat="server" Visible="True" Style=" position: absolute; top:-1000000px; left:-10000px;"></asp:TextBox>
             <table>
                 <tr>
                     <td style="vertical-align:top;">
@@ -80,15 +83,15 @@
                     <td style="vertical-align:top;">
                         <asp:Image ID="Image1" runat="server" Height="263px" Width="270px" />  
                 <br />
-                <asp:FileUpload ID="FileUpload1" runat="server" />
-                &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:FileUpload ID="FileUpload1" runat="server"  OnChange="UploadFile(this)"/>
+                &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="image_vale" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                         <br />
-                <asp:Button ID="Show_Image" runat="server" OnClick="Show_Image_Click" Text="Show image" CausesValidation="False"/>
                 <br />
                 <asp:Label ID="saved" runat="server"></asp:Label>
                     </td>
                 </tr>
             </table>
+                    
         </div>
     </form>
 </body>
