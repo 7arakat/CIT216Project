@@ -79,6 +79,10 @@
     <Content Include="App_Data\web project DB_log.ldf">
       <DependentUpon>web project DB.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Ziad_SQL.mdf" />
+    <Content Include="App_Data\Ziad_SQL_log.ldf">
+      <DependentUpon>Ziad_SQL.mdf</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
