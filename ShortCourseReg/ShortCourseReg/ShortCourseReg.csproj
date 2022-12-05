@@ -73,8 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddImahe.aspx" />
-    <Content Include="App_Data\Restorant_BD.mdf" />
-    <Content Include="App_Data\Restorant_BD_log.ldf" />
     <Content Include="App_Data\web project DB.mdf" />
     <Content Include="App_Data\web project DB_log.ldf">
       <DependentUpon>web project DB.mdf</DependentUpon>
