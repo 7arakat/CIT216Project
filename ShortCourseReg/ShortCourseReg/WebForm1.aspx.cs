@@ -40,24 +40,43 @@ namespace ShortCourseReg
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string SQL_Command = "SELECT * from Items ";
-            con.Open();
-            cmd = new SqlCommand(SQL_Command, con);
-            SqlDataAdapter adb = new SqlDataAdapter(cmd);
+            if (!Page.IsPostBack)
+            {
+                string SQL_Command = "SELECT * from Items ";
+                con.Open();
+                cmd = new SqlCommand(SQL_Command, con);
+                SqlDataAdapter adb = new SqlDataAdapter(cmd);
 
-            dataSet = new DataSet();
-            adb.Fill(dataSet);
-            DataList1.DataSource = dataSet;
-            DataList1.DataBind();
-            con.Close();
-
-
+                dataSet = new DataSet();
+                adb.Fill(dataSet);
+                DataList1.DataSource = dataSet;
+                DataList1.DataBind();
+                con.Close();
+            }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
         //    Process p = new Process();
         //    p.StartInfo.FileName = "C:\\Users\\alaze\\Desktop\\DCC Term 3\\CIT215-Programming II\\Programming project\\programming project v2\\programming project\\bin\\Debug\\programming project.exe";
         //    p.Start();
+        }
+
+        
+
+        protected void submet_Click(object sender, EventArgs e)
+        {
+            
+            Button button = (Button)sender;
+            DataListItem dd = (DataListItem)button.NamingContainer;
+
+            Label lbl = dd.FindControl("Label1") as Label;
+            Response.Redirect("");
+            Debug.WriteLine(lbl.Text);
+        }
+
+        protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Debug.WriteLine("nljgjgf");
         }
     }
 }

@@ -328,14 +328,16 @@
             
         </div>
             <asp:Panel ID="Panel1" runat="server">
-                <asp:DataList ID="DataList1" runat="server" RepeatColumns="4" CellPadding="3">
+                <asp:DataList ID="DataList1" runat="server" RepeatColumns="4" CellPadding="3" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
                     <ItemTemplate>
                         <div class="container_button">                            
                                 <div class="card">
                                 <p class="auto-style1">Name: <%# Eval("ItemName") %></p>
 
                                 <p class="auto-style1"><asp:Image ID="Image1" CssClass="img" runat="server" ImageUrl='<%# mm((int)Eval("ItemID")) %>' Height="75px" Width="75px"/></p>
-                            
+
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ItemID") %>'></asp:Label>
+                                    <asp:Button ID="submet" runat="server" Text="submet" OnClick="submet_Click" />
                                 </div>
                                 
                             </div>
