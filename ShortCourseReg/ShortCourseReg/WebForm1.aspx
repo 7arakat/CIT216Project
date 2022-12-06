@@ -280,6 +280,20 @@
             position:relative;
             bottom: 10px;
         }
+       .Team
+       {
+           position:relative;
+           top:250px;
+           right:80px;
+       }
+       .member
+       {
+           position:relative;
+           left:250px;
+           /*width:55%;*/
+           display:inline-block;
+          
+       }
        
     </style>
     <script  type="text/javascript">
@@ -313,7 +327,7 @@
            
                 <ul id="slideWrap">
                     <li>
-                        <img src="Images/dcc.jfif" alt="" />
+                        <img src="img/dcc.jfif" alt="" />
                     </li>
                 </ul>
             </div>
@@ -330,7 +344,8 @@
             <asp:Panel ID="Panel1" runat="server">
                 <asp:DataList ID="DataList1" runat="server" RepeatColumns="4" CellPadding="3" OnSelectedIndexChanged="DataList1_SelectedIndexChanged">
                     <ItemTemplate>
-                        <div class="container_button">                            
+                        <div class="container_button">   
+                            
                                 <div class="card">
                                 <p class="auto-style1">Name: <%# Eval("ItemName") %></p>
 
@@ -344,7 +359,36 @@
                     </ItemTemplate>
                 </asp:DataList>
             </asp:Panel>
-            
+            <div class="Team">
+                <h1 style="color:green; text-align:center">Meet The Team</h1>
+                <div class="member">
+                    <img src="img/gehad.jfif" height="300" width="200" style="border:2px solid green"/>
+                    <h2 style="color:green;">Gehad M. Aqel</h2>
+                    <p style="color: gray;">Designer</p>
+                    </div>
+                <div class="member" style="position:relative; left:350px;">
+                    <img src="img/Ziad.jpg" height="300" width="200" style="border:2px solid green"/>
+                    <h2 style="color:green; ">Ziad Harakat</h2>
+                    <p style="color: gray;">Designer & Developer</p>
+
+                </div>
+
+                <div class="member" style="position:relative; left:450px;">
+                    <img src="img/azooz.jfif" height="300" width="200" style="border:2px solid green"/>
+                    <h2 style="color:green;">Abdulaziz Al-Nashawati</h2>
+                    <p style="color: gray; position:relative; left:50px">Developer</p>
+
+                </div>
+
+                <div class="member" style="position:relative; left:550px;">
+                    <img src="img/salamon.jfif" height="300" width="200" style="border:2px solid green"/>
+                    <h2 style="color:green;">Salmeen Binmahfooz</h2>
+                    <p style="color: gray; position:relative; left:50px">Developer & Designer</p>
+
+                </div>
+                
+                
+            </div>
         </div>
        
     </form>
