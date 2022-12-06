@@ -83,6 +83,71 @@
     <Content Include="App_Data\Ziad_SQL_log.ldf">
       <DependentUpon>Ziad_SQL.mdf</DependentUpon>
     </Content>
+    <Content Include="Details.aspx" />
+    <Content Include="img\about.png" />
+    <Content Include="img\azooz.jfif" />
+    <Content Include="img\banner-left.png" />
+    <Content Include="img\banner-right.png" />
+    <Content Include="img\barrak.jfif" />
+    <Content Include="img\bg-banner.jpg" />
+    <Content Include="img\car-rent-1.png" />
+    <Content Include="img\car-rent-2.png" />
+    <Content Include="img\car-rent-3.png" />
+    <Content Include="img\car-rent-4.png" />
+    <Content Include="img\car-rent-5.png" />
+    <Content Include="img\car-rent-6.png" />
+    <Content Include="img\carousel-1.jpg" />
+    <Content Include="img\carousel-2.jpg" />
+    <Content Include="img\dcc.jfif" />
+    <Content Include="img\dcclogo.png" />
+    <Content Include="img\demonslayer.png" />
+    <Content Include="img\donke.jfif" />
+    <Content Include="img\donkey.png" />
+    <Content Include="img\drpic.jpg" />
+    <Content Include="img\gallery-1.jpg" />
+    <Content Include="img\gallery-2.jpg" />
+    <Content Include="img\gallery-3.jpg" />
+    <Content Include="img\gallery-4.jpg" />
+    <Content Include="img\gallery-5.jpg" />
+    <Content Include="img\gallery-6.jpg" />
+    <Content Include="img\gehad.jfif" />
+    <Content Include="img\gigachad.jfif" />
+    <Content Include="img\grouppic1.jpg" />
+    <Content Include="img\kaf.jpg" />
+    <Content Include="img\m7sn.jfif" />
+    <Content Include="img\mafiaboss.jfif" />
+    <Content Include="img\osama.jfif" />
+    <Content Include="img\rbani.jpg" />
+    <Content Include="img\salamon.jfif" />
+    <Content Include="img\salmeen.jpg" />
+    <Content Include="img\sdonkey1.png" />
+    <Content Include="img\sdonkey2.png" />
+    <Content Include="img\sdonkey3.png" />
+    <Content Include="img\team-1.jpg" />
+    <Content Include="img\team-2.jpg" />
+    <Content Include="img\team-3.jpg" />
+    <Content Include="img\team-4.jpg" />
+    <Content Include="img\testimonial-1.jpg" />
+    <Content Include="img\testimonial-2.jpg" />
+    <Content Include="img\testimonial-3.jpg" />
+    <Content Include="img\testimonial-4.jpg" />
+    <Content Include="img\vendor-1.png" />
+    <Content Include="img\vendor-2.png" />
+    <Content Include="img\vendor-3.png" />
+    <Content Include="img\vendor-4.png" />
+    <Content Include="img\vendor-5.png" />
+    <Content Include="img\vendor-6.png" />
+    <Content Include="img\vendor-7.png" />
+    <Content Include="img\vendor-8.png" />
+    <Content Include="img\W3Schools Tryit Editor.html" />
+    <Content Include="img\W3Schools Tryit Editor_files\codemirror.css" />
+    <Content Include="img\W3Schools Tryit Editor_files\saved_resource.html" />
+    <Content Include="img\W3Schools Tryit Editor_files\spaceit.css" />
+    <Content Include="img\W3Schools Tryit Editor_files\spaces-icon-tryit.svg" />
+    <Content Include="img\W3Schools Tryit Editor_files\w3schools30.css" />
+    <Content Include="img\wimpykid.jfif" />
+    <Content Include="img\ziad.jfif" />
+    <Content Include="img\Ziad.jpg" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -94,6 +159,13 @@
     <Compile Include="AddImahe.aspx.designer.cs">
       <DependentUpon>AddImahe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -104,6 +176,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\W3Schools Tryit Editor_files\analytics.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\codemirror.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\codemirror_jsx.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\common-deps.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\gtm.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\loader.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\spaceit.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\uic.js.download" />
+    <Content Include="img\W3Schools Tryit Editor_files\user-session.js.download" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

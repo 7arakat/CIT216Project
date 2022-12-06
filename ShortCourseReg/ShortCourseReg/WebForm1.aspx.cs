@@ -55,9 +55,10 @@ namespace ShortCourseReg
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-        //    Process p = new Process();
-        //    p.StartInfo.FileName = "C:\\Users\\alaze\\Desktop\\DCC Term 3\\CIT215-Programming II\\Programming project\\programming project v2\\programming project\\bin\\Debug\\programming project.exe";
-        //    p.Start();
+            //    Process p = new Process();
+            //    p.StartInfo.FileName = "C:\\Users\\alaze\\Desktop\\DCC Term 3\\CIT215-Programming II\\Programming project\\programming project v2\\programming project\\bin\\Debug\\programming project.exe";
+            //    p.Start();
+            Response.Redirect("https://www.dcc.kfupm.edu.sa/");
         }
     }
 }
