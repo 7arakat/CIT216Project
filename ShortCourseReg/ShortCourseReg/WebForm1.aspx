@@ -231,7 +231,7 @@
             width:50%;
         }
         .auto-style1 {
-            width: 200px;
+            width: 121px;
         }
         /*Projects*/
         .container_button
@@ -283,7 +283,7 @@
        .Team
        {
            position:relative;
-           top:250px;
+           top:300px;
            right:80px;
        }
        .member
@@ -347,11 +347,10 @@
                         <div class="container_button">   
                             
                                 <div class="card">
-                                <p class="auto-style1">Name: <%# Eval("ItemName") %></p>
+                                <p>Name: <%# Eval("ItemName") %></p>
 
                                 <p class="auto-style1"><asp:Image ID="Image1" CssClass="img" runat="server" ImageUrl='<%# mm((int)Eval("ItemID")) %>' Height="75px" Width="75px"/></p>
-
-                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ItemID") %>'></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ItemID") %>' Visible="False"></asp:Label>
                                     <asp:Button ID="submet" runat="server" Text="submet" OnClick="submet_Click" />
                                 </div>
                                 

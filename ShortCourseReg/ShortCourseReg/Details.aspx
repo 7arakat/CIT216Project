@@ -118,10 +118,11 @@
             <br />
             <h2 style="text-align:center; color:gray; font-size:32px;">Project Details</h2>
             <br />
-            <p style="color:green; text-align:center; position:relative; right:150px">Project Name: </p>
-            <p style="color:green; text-align:center; position:relative; right:150px">Developer: </p>
-            <p style="color:green; text-align:center; position:relative; right:150px">Description: </p>
-            <p style="color:green; text-align:center; position:relative; right:150px">Software: </p>
+            <pstyle="color:green; text-align:center; position:relative; right:150px"> <asp:Image ID="Image1" runat="server" Height="315px" ImageAlign="Middle" Width="1200px" /></pstyle="color:green;>
+            <p style="color:green; text-align:center; position:relative; right:150px">Project Name:<asp:Label ID="Name" runat="server" Text="Label"></asp:Label></p>
+            <p style="color:green; text-align:center; position:relative; right:150px">Developer: <asp:Label ID="Developer" runat="server" Text="Label"></asp:Label></p>
+            <p style="color:green; text-align:center; position:relative; right:150px">Description: <asp:Label ID="Description" runat="server" Text="Label"></asp:Label></p>
+            <p style="color:green; text-align:center; position:relative; right:150px">Software: <asp:Label ID="Software" runat="server" Text="Label"></asp:Label></p>
            
         </div>
         <button type="button">

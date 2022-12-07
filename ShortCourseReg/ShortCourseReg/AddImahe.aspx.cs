@@ -18,6 +18,8 @@ using System.Web.Security;
 using System.Diagnostics;
 using System.Reflection.Emit;
 using System.Web.Services;
+using System.Drawing;
+using System.Text;
 //using static System.Net.WebRequestMethods;
 
 
@@ -26,9 +28,11 @@ namespace ShortCourseReg
     public partial class AddImahe : System.Web.UI.Page
     {
         byte[] image_byte = null;
+        string File_name = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             image_byte = (byte[])Session["ImageValue"];
+            File_name = (String)Session["File_name"];
         }
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString);
@@ -38,13 +42,16 @@ namespace ShortCourseReg
             try
             {
                 con.Open();
-                string SQL_Command = "insert into Items(ItemName, ItemDescription, ItemCategory, ItemCreator, ItemImage) Values(@ItemName, @ItemDescription, @ItemCategory, @ItemCreator, @ItemImage)";
+                string SQL_Command = "insert into Items(ItemName, ItemDescription, Software, ItemCreator, ItemImage, ProjectFile) Values(@ItemName, @ItemDescription, @Software, @ItemCreator, @ItemImage, @ProjectFile)";
                 cmd = new SqlCommand(SQL_Command, con);
                 cmd.Parameters.AddWithValue("@ItemName", Name.Text);
                 cmd.Parameters.AddWithValue("@ItemDescription", Description.Text);
-                cmd.Parameters.AddWithValue("@ItemCategory", Category.Text);
+                cmd.Parameters.AddWithValue("@Software", Category.Text);
                 cmd.Parameters.AddWithValue("@ItemCreator", Creator.Text);
                 cmd.Parameters.AddWithValue("@ItemImage", image_byte);
+                cmd.Parameters.AddWithValue("@ProjectFile", File_name);
+                FileUpload1.SaveAs(File_name);
+                FileUpload1.SaveAs((String)Session["DatabaseFile_name"]);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 saved.Text = "Saved successfully";
@@ -61,10 +68,10 @@ namespace ShortCourseReg
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE Items set ItemDescription =@ItemDescription, ItemCategory =@ItemCategory, ItemCreator =@ItemCreator, ItemImage =@ItemImage  where ItemName= @ItemName", con);
+                SqlCommand cmd = new SqlCommand("UPDATE Items set ItemDescription =@ItemDescription, Software =@Software, ItemCreator =@ItemCreator, ItemImage =@ItemImage  where ItemName= @ItemName", con);
                 cmd.Parameters.AddWithValue("@ItemName", Name.Text);
                 cmd.Parameters.AddWithValue("@ItemDescription", Description.Text);
-                cmd.Parameters.AddWithValue("@ItemCategory", Category.Text);
+                cmd.Parameters.AddWithValue("@Software", Category.Text);
                 cmd.Parameters.AddWithValue("@ItemCreator", Creator.Text);
                 cmd.Parameters.AddWithValue("@ItemImage", image_byte);
                 cmd.ExecuteNonQuery();
@@ -91,7 +98,7 @@ namespace ShortCourseReg
                 {
                     Name.Text = Convert.ToString(R["ItemName"]);
                     Description.Text = Convert.ToString(R["ItemDescription"]);
-                    Category.Text = Convert.ToString(R["ItemCategory"]);
+                    Category.Text = Convert.ToString(R["Software"]);
                     Creator.Text = Convert.ToString(R["ItemCreator"]);
                     Session["ImageValue"] = (byte[])R["ItemImage"];
                     string imge_string = Convert.ToBase64String((byte[])Session["ImageValue"]);
@@ -140,12 +147,87 @@ namespace ShortCourseReg
                     BinaryReader br = new BinaryReader(stream);
                     image_byte = br.ReadBytes((int)stream.Length);
                     Session["ImageValue"] = image_byte;
-                    image_vale.Text = "true";
+                    image_uplod.Text = File_Name;
+                    image_uplod.BackColor = Color.Green;
 
                     string imge_string = Convert.ToBase64String(image_byte);
                     string img = "data:Image/png;base64," + imge_string;
                     Image1.ImageUrl = img;
                 }
+                if (File_Extension.ToLower() == ".exe")
+                {
+                    StringBuilder B = new StringBuilder();
+                    string file_save = @"C:\Users\alaze\Desktop\DCC Term 3\CIT216-Web Authoring II\Web project\CIT216Project\ShortCourseReg\ShortCourseReg\Projects saves\"+Creator.Text+"_"+ Name.Text + "\\";
+                    
+                        if (!Directory.Exists(file_save))
+                        {
+                            if (Name.Text != "" && Creator.Text != "")
+                            {
+                                Directory.CreateDirectory(file_save);
+                                Session["File_name"] = file_save + FileUpload1.FileName;
+                                ProjectFile_Uplod.Text = FileUpload1.FileName;
+                                ProjectFile_Uplod.BackColor = Color.Green;
+                        }
+                            else
+                            {
+                                saved.Text = "Name is Creator for Uploding the file";
+                            }
+                            
+                        }
+                        else
+                        {
+                            if (Name.Text != "" && Creator.Text != "")
+                            {
+                                Session["File_name"] = file_save + FileUpload1.FileName;
+                                ProjectFile_Uplod.Text = FileUpload1.FileName;
+                                ProjectFile_Uplod.BackColor = Color.Green;
+                            }
+                            else
+                            {
+                                saved.Text = "Name is Creator for Uploding the file";
+                            }
+
+                        }
+                    }
+                
+                if (File_Extension.ToLower() == ".mdf" || File_Extension.ToLower() == ".accdb")
+                {
+                    StringBuilder B = new StringBuilder();
+                    string file_save = @"C:\Users\alaze\Desktop\DCC Term 3\CIT216-Web Authoring II\Web project\CIT216Project\ShortCourseReg\ShortCourseReg\Projects saves\" + Creator.Text + "_" + Name.Text + "\\";
+                    Debug.WriteLine("DatabaseFile_Uplode0");
+                    if (!Directory.Exists(file_save))
+                    {
+                        if (Name.Text != "" && Creator.Text != "")
+                        {
+                            Directory.CreateDirectory(file_save);
+                            Session["DatabaseFile_name"] = file_save + FileUpload1.FileName;
+                            DatabaseFile_Uplode.Text = FileUpload1.FileName;
+                            DatabaseFile_Uplode.BackColor = Color.Green;
+                            Debug.WriteLine("DatabaseFile_Uplode1");
+                        }
+                        else
+                        {
+                            saved.Text = "Name is Creator for Uploding the file";
+                        }
+
+                    }
+                    else
+                    {
+                        if (Name.Text != "" && Creator.Text != "")
+                        {
+                            Session["DatabaseFile_name"] = file_save + FileUpload1.FileName;
+                            DatabaseFile_Uplode.Text = FileUpload1.FileName;
+                            DatabaseFile_Uplode.BackColor = Color.Green;
+                            Debug.WriteLine("DatabaseFile_Uplode2");
+                        }
+                        else
+                        {
+                            saved.Text = "Name is Creator for Uploding the file";
+                        }
+                    }
+                }
+                Debug.WriteLine("Datab");
+
             }
         }
         private void Clear_Contrils()

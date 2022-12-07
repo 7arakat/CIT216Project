@@ -21,16 +21,6 @@ namespace ShortCourseReg
 
         public string mm(int i)
         {
-            //foreach (DataRow row in dataSet.Tables[0].Rows)
-            //{
-            //    if ((int)row[0] == i )
-            //    {
-            //        Debug.WriteLine("count "+count);
-            //        Debug.WriteLine("row "+row[0]);
-            //        count++;
-            //    }
-                    
-            //}
             byte[] imag = (byte[])(dataSet.Tables[0].Rows[count]["ItemImage"]);
             count++;
             string imge_string = Convert.ToBase64String(imag);
@@ -66,18 +56,16 @@ namespace ShortCourseReg
 
         protected void submet_Click(object sender, EventArgs e)
         {
-            
             Button button = (Button)sender;
             DataListItem dd = (DataListItem)button.NamingContainer;
 
             Label lbl = dd.FindControl("Label1") as Label;
-            Response.Redirect("");
+            Response.Redirect("~/Details.aspx?ID=" + lbl.Text);
             Debug.WriteLine(lbl.Text);
         }
 
         protected void DataList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("nljgjgf");
         }
     }
 }

@@ -16,6 +16,22 @@
    </script>
 
     
+    <style type="text/css">
+        .auto-style1 {
+            width: 342px;
+        }
+        .auto-style3 {
+            width: 35px;
+        }
+        .auto-style4 {
+            width: 105px;
+        }
+        .auto-style5 {
+            width: 85px;
+        }
+    </style>
+
+    
     </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +40,7 @@
             <asp:TextBox ID="image_vale" runat="server" Visible="True" Style=" position: absolute; top:-1000000px; left:-10000px;"></asp:TextBox>
             <table>
                 <tr>
-                    <td style="vertical-align:top;">
+                    <td style="vertical-align:top;" rowspan="2">
                         <table>
                             <tr>
                                 <td>
@@ -80,14 +96,52 @@
                             </tr>
                         </table>
                     </td>
-                    <td style="vertical-align:top;">
-                        <asp:Image ID="Image1" runat="server" Height="263px" Width="270px" />  
+                    <td style="vertical-align:top;" class="auto-style1">
+                    <asp:Image ID="Image1" runat="server" Height="263px" Width="350px" />  
                 <br />
-                <asp:FileUpload ID="FileUpload1" runat="server"  OnChange="UploadFile(this)"/>
-                &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="image_vale" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                        <br />
-                <br />
-                <asp:Label ID="saved" runat="server"></asp:Label>
+                <asp:FileUpload ID="FileUpload1" runat="server"  OnChange="UploadFile(this)" Width="327px"/>
+                &nbsp;<asp:Label ID="saved" runat="server"></asp:Label>
+                        <table>
+                            <tr>
+                                <td class="auto-style4">
+                                    Image: 
+                                </td>
+                                <td class="auto-style5">
+                                    <asp:TextBox ID="image_uplod" runat="server" Width="189px" BackColor="Red"></asp:TextBox>
+                                </td>
+                                <td class="auto-style3">
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="image_uplod" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                       
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style4">
+                                    Project File: 
+                                </td>
+                                <td class="auto-style5">
+                                    <asp:TextBox ID="ProjectFile_Uplod" runat="server" Width="189px" BackColor="Red"></asp:TextBox>
+                                </td>
+                                <td class="auto-style3">
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ProjectFile_Uplod" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                       
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style4">
+                                    Database File: 
+                                </td>
+                                <td class="auto-style5">
+                                    <asp:TextBox ID="DatabaseFile_Uplode" runat="server" Width="189px" BackColor="Red"></asp:TextBox>
+                                </td>
+                                <td class="auto-style3">
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DatabaseFile_Uplode" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                       
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>
